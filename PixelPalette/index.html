@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pixel Palette</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <div id="app">
+    <header class="retro-header">Pixel Palette</header>
+
+    <main class="workspace">
+
+      <div class="canvas-area">
+        <canvas id="pixelCanvas" width="512" height="512"></canvas>
+
+        <div id="popup" class="popup"></div>
+
+        <label class="grid-toggle">
+          <input type="checkbox" id="toggle-grid" checked>
+          Show Grid
+        </label>
+
+        <div class="zoom-label">32×32 (zoomed)</div>
+      </div>
+
+      <aside class="controls">
+
+        <!-- Tools -->
+        <div class="tools">
+            <button id="tool-pencil" class="tool-button">Pencil</button>
+            <button id="tool-eraser" class="tool-button">Eraser</button>
+            <button id="tool-fill" class="tool-button">Fill</button>
+            <button id="tool-eye-drop" class="tool-button">Eyedrop</button>
+
+        </div>
+
+        <!-- Colors -->
+        <div class="current-colors">
+          <div class="color-box">
+            <div class="label">Primary</div>
+            <input type="color" id="primary-picker">
+          </div>
+          <div class="color-box">
+            <div class="label">Secondary</div>
+            <input type="color" id="secondary-picker">
+          </div>
+        </div>
+
+        <!-- Retro Palettes -->
+        <select id="palette-select">
+          <option value="nes">NES</option>
+          <option value="pico8">PICO-8</option>
+          <option value="gameboy">Game Boy</option>
+        </select>
+
+        <div class="palette" id="palette"></div>
+
+        <!-- Upscale Controls -->
+        <div class="upscale-controls">
+          <h3 style="margin: 12px 0 8px 0; font-size: 14px;">Upscale Settings</h3>
+          <div style="margin-bottom: 8px;">
+            <label style="display: block; margin-bottom: 4px; font-size: 12px;">Scale Factor:</label>
+            <select id="upscale-factor" style="width: 100%; padding: 4px; background: #111; color: white; border: 1px solid #444;">
+              <option value="2">2x</option>
+              <option value="4" selected>4x</option>
+              <option value="8">8x</option>
+              <option value="16">16x</option>
+            </select>
+          </div> 
+          <label style="display: flex; align-items: center; gap: 6px; margin: 8px 0; font-size: 12px;">
+            <input type="checkbox" id="enable-shading" checked>
+            Auto Shading
+          </label>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button id="undo">Undo (Ctrl+Z)</button>
+          <button id="redo">Redo (Ctrl+Y)</button>
+          <button id="ai-upscale">Upscale Image</button>
+          <button id="export">Export PNG</button>
+          <button id="save-json">Save Project</button>
+          <input type="file" id="load-json" style="display:none">
+
+          <button id="load-btn">Load Project</button>
+        </div>
+
+      </aside>
+
+        <!-- Upscale Display -->
+        <div class="upscale-area">
+            <canvas id="upscaleCanvas" width="512" height="512"></canvas>
+            <div class="zoom-label">Upscaled</div>
+        </div>
+    </main>
+
+    <footer class="retro-footer">Save to Floppy? 💾</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
